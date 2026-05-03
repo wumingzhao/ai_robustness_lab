@@ -28,6 +28,16 @@ with open(CONFIG_PATH, "r", encoding="utf-8") as f:
 # 0.5 解决 Matplotlib 中文乱码
 # ==========================================
 def setup_chinese_font():
+    # 优先级1：项目自带字体（打包在 fonts/SimHei.ttf，走哪都不怕）
+    bundled_font = os.path.join(os.path.dirname(__file__), "fonts", "SimHei.ttf")
+    if os.path.exists(bundled_font):
+        font_prop = fm.FontProperties(fname=bundled_font)
+        plt.rcParams['font.family'] = font_prop.get_name()
+        fm.fontManager.addfont(bundled_font)
+        plt.rcParams['axes.unicode_minus'] = False
+        return
+
+    # 优先级2：系统字体（本地开发环境兜底）
     system = platform.system()
     font_path = None
     if system == 'Windows':
@@ -43,12 +53,16 @@ def setup_chinese_font():
             font_prop = fm.FontProperties(fname=font_path)
             plt.rcParams['font.family'] = font_prop.get_name()
         else:
-            plt.rcParams['font.sans-serif'] = ['SimHei', 'Microsoft YaHei', 'PingFang SC', 'WenQuanYi Zen Hei', 'Arial Unicode MS']
+            plt.rcParams['font.sans-serif'] = [
+                'SimHei', 'Microsoft YaHei', 'PingFang SC',
+                'WenQuanYi Zen Hei', 'Arial Unicode MS'
+            ]
     except Exception:
         pass
     plt.rcParams['axes.unicode_minus'] = False
 
 setup_chinese_font()
+
 
 # ==========================================
 # 1. 核心算法引擎 (增加特征漂移计算)
