@@ -1,0 +1,10 @@
+{
+    "scene_name": "广彩瓷器甄别",
+    "feature_x": "釉面纹理复杂度",
+    "feature_y": "色彩光谱饱和度",
+    "positive_label": "正品",
+    "negative_label": "废品",
+    "sample_img": "assets/guangcai.png",
+    "seal_img": "assets/seal.png"
+  }
+  
