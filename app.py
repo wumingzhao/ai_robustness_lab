@@ -70,8 +70,8 @@ setup_chinese_font()
 def run_algorithm_simulation(algo_type, overlap, poison_rate, sample_size, blur=0, occlude=0):
     # 1. 生成历史数据（边界）
     center_distance = 4.0 * (1.0 - overlap)
-    centers = np.array([[-center_distance/2, -center_distance/2],
-                        [center_distance/2, center_distance/2]])
+    centers = np.array([[center_distance/2, center_distance/2],
+                        [-center_distance/2, -center_distance/2]])
     X, y = make_blobs(n_samples=sample_size, centers=centers, cluster_std=1.2, random_state=42)
 
     if poison_rate > 0:
@@ -88,9 +88,9 @@ def run_algorithm_simulation(algo_type, overlap, poison_rate, sample_size, blur=
 
     # ✅ 核心黑科技：将左侧的非结构化干扰，转化为结构化的坐标偏移！
     # 正常情况下，正品特征在 [0, 0] 附近（绝对安全区）
-    base_x, base_y = 0.0, 0.0
-    drift_x = blur * 0.25        # 模糊导致色彩特征向右侧危险区漂移
-    drift_y = -occlude * 0.05    # 遮挡导致边缘特征向下方危险区漂移
+    base_x, base_y = center_distance/2 * 0.6, center_distance/2 * 0.6
+    drift_x = -blur * 0.25       # 模糊导致色彩特征向左侧危险区漂移
+    drift_y = -occlude * 0.1    # 遮挡导致边缘特征向下方危险区漂移
     
     test_point = np.array([[base_x + drift_x, base_y + drift_y]])
     real_label = 0
@@ -107,7 +107,7 @@ def run_algorithm_simulation(algo_type, overlap, poison_rate, sample_size, blur=
     Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
     Z = Z.reshape(xx.shape)
 
-    ax.contourf(xx, yy, Z, alpha=0.3, cmap='RdBu')
+    ax.contourf(xx, yy, Z, alpha=0.3, cmap='RdBu_r')
     ax.scatter(X[:, 0], X[:, 1], c=y, cmap='bwr', edgecolors='black', s=25, alpha=0.8, label="历史经验库")
 
     marker = 'X' if is_misjudged else '*'
