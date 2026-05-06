@@ -286,7 +286,7 @@ with st.sidebar:
 
 
     st.subheader("3️⃣ 结构化数据破坏器")
-    overlap = st.slider("特征重叠度 (数据混淆)", 0.0, 0.9, 0.2, step=0.1, help="拉高，模拟好次品长得太像")
+    overlap = st.slider("特征重叠度 (数据混淆)", 0.0, 0.9, 0.0, step=0.1, help="拉高，模拟好次品长得太像")
     poison = st.slider("标注投毒率 (脏数据)", 0.0, 0.3, 0.0, step=0.05, help="拉高，模拟人工贴错标签")
 
     
@@ -303,7 +303,7 @@ fig, accuracy, is_misjudged = run_algorithm_simulation(
     algo_clean, overlap, poison, sample_num, blur_level, occlude_level
 )
 
-any_failed = accuracy < 0.85 or is_misjudged
+any_failed = is_misjudged
 
 col_left, col_right = st.columns(2, gap="large")
 
