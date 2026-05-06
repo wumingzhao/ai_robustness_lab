@@ -8,7 +8,7 @@
 **面向结构化与非结构化数据的决策机制剖析工具**
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://airobustnesslab-qpyhrdy4d6ndzea6zrniyy.streamlit.app/)
-[![Download](https://img.shields.io/badge/下载-便携版-blue)](你的GitHub下载链接) 
+[![Download](https://img.shields.io/badge/下载-便携版-blue)]([你的GitHub下载链接](https://github.com/wumingzhao/ai_robustness_lab/releases/download/v1.0.0/ai_robustness_lab_win_portable_v1.0.zip)) 
 [![GitHub License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 </div> 
