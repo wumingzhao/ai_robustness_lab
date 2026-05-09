@@ -36,20 +36,22 @@
 
 ## 🚀 快速开始
 
-### 方式一：开箱即用（推荐！小白首选 💡）
-
-如果你不想折腾环境配置，请直接下载 `Release` 中的便携版压缩包：
-
-1. **解压**压缩包到任意文件夹（路径中**不要有中文**）
-2. 双击运行 📄 `一键启动.bat`
-3. 浏览器会自动弹出，开始探究！
-
-> ⚠️ 注意：便携版仅限 Windows 系统使用。解压后请勿移动内部文件位置。
-
+### 方式一：在线体验（最快速！免安装 🚀）
+无需安装任何环境，点击下方按钮直接在浏览器中开启探究！
+<br>
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://airobustnesslab-qpyhrdy4d6ndzea6zrniyy.streamlit.app/)
+> ⚠️ 注意：在线版部署于 Streamlit Community Cloud，首次加载可能需要唤醒服务器（约10-30秒），请耐心等待。
 ---
-
-### 方式二：本地源码部署（开发者）
-
+### 方式二：开箱即用（本地便携版 💡）
+如果你希望随时随地流畅使用，或要在无网络的教学机房部署，请下载便携版：
+1. 点击下载 [便携版压缩包](https://github.com/wumingzhao/ai_robustness_lab/releases/download/v1.0.0/ai_robustness_lab_win_portable_v1.0.zip)
+2. **解压**压缩包到任意文件夹（路径中**不要有中文**）
+3. 双击运行 📄 `一键启动.bat`
+4. 浏览器会自动弹出，开始探究！
+> ⚠️ 注意：便携版仅限 Windows 系统使用。解压后请勿移动内部文件位置。
+---
+### 方式三：本地源码部署（开发者 🔧）
+如果你希望二次开发或查阅源码，请使用此方式：
 #### 1. 克隆项目
 
 ```bash  
