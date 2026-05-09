@@ -1,0 +1,10 @@
+{
+    "scene_name": "医疗X光肺结节筛查",
+    "feature_x": "结节边缘毛刺度",
+    "feature_y": "病灶阴影密度",
+    "positive_label": "恶性",
+    "negative_label": "良性",
+    "sample_img": "assets/xray.png",
+    "seal_img": "assets/seal.png"
+  }
+  
