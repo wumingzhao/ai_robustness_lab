@@ -100,8 +100,14 @@ def run_algorithm_simulation(algo_type, overlap, poison_rate, sample_size, blur=
     # 绘图逻辑保持不变
     fig, ax = plt.subplots(figsize=(5.0, 4.0))
     fig.patch.set_alpha(0)  # 背景透明，与Streamlit更融合
-    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+    #x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+    #y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+    # ✅ 修复：动态扩展绘图边界，确保跑偏的测试点(⭐)也能被红蓝区覆盖
+    x_min = min(X[:, 0].min(), test_point[0, 0]) - 1.5
+    x_max = max(X[:, 0].max(), test_point[0, 0]) + 1.5
+    y_min = min(X[:, 1].min(), test_point[0, 1]) - 1.5
+    y_max = max(X[:, 1].max(), test_point[0, 1]) + 1.5
+
     xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.15),
                          np.arange(y_min, y_max, 0.15))
     Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
